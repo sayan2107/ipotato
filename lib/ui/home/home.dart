@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
-import 'package:ipotato_timer/ui/add_task/addTask.dart';
+import 'package:ipotato_timer/ui/add_task/add_task.dart';
 import 'package:ipotato_timer/widgets/home/task_widget.dart';
 import 'package:provider/provider.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
-import 'package:ipotato_timer/ui/home/home.dart';
+import 'package:ipotato_timer/ui/splash/splash.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         title: Strings.appName,
         // routes: Routes.routes,
 
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -16,7 +16,6 @@ class AddTaskScreen extends StatefulWidget {
 class _AddTaskScreenState extends State<AddTaskScreen> {
   String title = "";
   String description = "";
-
   int? durationHour;
   int? durationMin;
   int? durationSec;
