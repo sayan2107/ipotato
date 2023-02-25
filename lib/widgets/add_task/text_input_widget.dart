@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/theme/app_text_theme.dart';
 
 class TextInputWidget extends StatelessWidget {
   const TextInputWidget({
@@ -22,20 +24,17 @@ class TextInputWidget extends StatelessWidget {
       maxLines: maxLine,
       autofocus: false,
       textInputAction: TextInputAction.done,
-      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+      style: AppTextTheme.of(context).h4.copyWith(color: AppColors.gray),
       decoration: InputDecoration(
         border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 5.0),
-        ),
+            borderSide: BorderSide(color: AppColors.lightGray, width: 2)),
         hintText: hintText,
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 12),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
         labelText: label,
-        labelStyle: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-        ),
+        labelStyle: AppTextTheme.of(context).h4.copyWith(color: AppColors.gray),
         focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black, width: 1),
+          borderSide: BorderSide(color: AppColors.darkBlue, width: 2),
         ),
       ),
     );

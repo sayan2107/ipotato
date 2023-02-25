@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/ui/home/home.dart';
@@ -40,6 +41,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: AppColors.darkGreen,
+            centerTitle: false,
+          ),
         ),
         title: Strings.appName,
         // routes: Routes.routes,
