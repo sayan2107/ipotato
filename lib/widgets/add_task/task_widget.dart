@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
-import 'package:ipotato_timer/ui/widgets/home/start_pause_button.dart';
-import 'package:ipotato_timer/ui/widgets/icon_button.dart';
+import 'package:ipotato_timer/widgets/home/start_pause_button.dart';
+import 'package:ipotato_timer/widgets/icon_button.dart';
 import 'package:provider/provider.dart';
 
 class TaskWidget extends StatelessWidget {
