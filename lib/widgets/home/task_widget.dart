@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/widgets/home/start_pause_button.dart';
@@ -101,7 +102,7 @@ class FinishedWidget extends StatelessWidget {
       children: [
         _getWaveIcon(),
         Text(
-          'Finished'.toUpperCase(),
+          Strings.homeFinishedButtonText.toUpperCase(),
           style:
               AppTextTheme.of(context).h1.copyWith(color: AppColors.darkBlue),
         ),
@@ -144,7 +145,7 @@ class MarkCompletedButton extends StatelessWidget {
         ),
         onPressed: onTap,
         child: Text(
-          "mark completed".toUpperCase(),
+          Strings.homeMarkCompletedButtonText.toUpperCase(),
           style: AppTextTheme.of(context).h6.copyWith(
               letterSpacing: 0.5,
               color: AppColors.darkestBlue,

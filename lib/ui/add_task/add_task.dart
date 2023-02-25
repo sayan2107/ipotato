@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/widgets/add_task/text_input_widget.dart';
@@ -41,13 +42,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Add Task",
+                        Strings.addTaskText,
                         style: AppTextTheme.of(context).h1,
                       ),
                       const SizedBox(height: 20),
                       TextInputWidget(
-                        label: 'Title',
-                        hintText: 'Enter title',
+                        label: Strings.titleText,
+                        hintText: Strings.enterTitleText,
                         onChangeCallBack: (String data) {
                           setState(() {
                             title = data;
@@ -58,7 +59,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       TextInputWidget(
                         maxLine: 6,
                         hintText: 'e.g. john@gmail.com',
-                        label: 'Description',
+                        label: Strings.descriptionText,
                         onChangeCallBack: (String data) {
                           setState(() {
                             description = data;
@@ -67,7 +68,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "Duration",
+                        Strings.durationText,
                         style: AppTextTheme.of(context).h6.copyWith(
                             color: AppColors.darkGray,
                             fontWeight: FontWeight.w500),

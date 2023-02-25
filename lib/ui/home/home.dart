@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/ui/add_task/add_task.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         titleSpacing: 25,
         title: Text(
-          'Potato Timer',
+          Strings.homeAppbarTitle,
           style: AppTextTheme.of(context).h1.copyWith(color: Colors.white),
         ),
       ),
