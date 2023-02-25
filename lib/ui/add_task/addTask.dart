@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
+import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/widgets/add_task/text_input_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +30,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         topRight: Radius.circular(40),
       ),
       child: Scaffold(
+        backgroundColor: AppColors.lightBlue,
         body: Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
@@ -39,7 +41,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Add task"),
+                      Text(
+                        "Add task",
+                        style: AppTextTheme.of(context).h1,
+                      ),
                       const SizedBox(height: 20),
                       TextInputWidget(
                         label: 'Title',
@@ -50,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           });
                         },
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 40),
                       TextInputWidget(
                         maxLine: 6,
                         hintText: 'e.g. john@gmail.com',
@@ -62,9 +67,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      const Text("Duration"),
+                      Text(
+                        "Duration",
+                        style: AppTextTheme.of(context)
+                            .h6
+                            .copyWith(color: AppColors.darkGray),
+                      ),
+                      const SizedBox(height: 8),
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _durationInput(
                             onChange: (String data) {
@@ -115,8 +125,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ),
                     ),
                   ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.greenAccent),
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) => !_isValid()
+                        ? Colors.grey.withOpacity(0.2)
+                        : AppColors.lightPurple,
+                  ),
                 ),
                 onPressed: !_isValid()
                     ? null
@@ -130,8 +143,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           description: description,
                           title: title,
                         );
+                        Navigator.of(context).pop();
                       },
-                child: const Text('Add Task'),
+                child: Text(
+                  'Add Task',
+                  style: AppTextTheme.of(context)
+                      .h5
+                      .copyWith(fontWeight: FontWeight.w500),
+                ),
               ),
             )
           ],
@@ -154,15 +173,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     required String unitText,
   }) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 70,
+          width: 50,
           child: TextFormField(
             maxLength: 2,
             keyboardType: TextInputType.number,
             onChanged: onChange,
             style: const TextStyle(
-              fontSize: 30.0,
+              fontSize: 20.0,
               height: 1.0,
               color: AppColors.darkGreen,
             ),
@@ -170,9 +190,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               border: InputBorder.none,
               filled: true,
               counterText: "",
-              fillColor: AppColors.green,
+              fillColor: AppColors.lightGreen,
             ),
           ),
+        ),
+        const SizedBox(
+          height: 4,
         ),
         Text(unitText)
       ],
