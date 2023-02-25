@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/ui/add_task/addTask.dart';
-import 'package:ipotato_timer/widgets/add_task/task_widget.dart';
+import 'package:ipotato_timer/widgets/home/task_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {

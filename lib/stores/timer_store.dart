@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:mobx/mobx.dart';
 
 part 'timer_store.g.dart';
@@ -65,6 +66,9 @@ abstract class _SingleTimer with Store {
       if (duration.inSeconds == 0) {
         stopwatch?.cancel();
         workTime = workTime.newStatus(Status.completed);
+
+        //play music
+        playMusic();
       } else {
         duration -= const Duration(seconds: 1);
       }
@@ -93,6 +97,14 @@ abstract class _SingleTimer with Store {
     stopwatch?.cancel();
 
     duration = Duration(minutes: isWorking ? workTime.time : restTime.time);
+  }
+
+  void playMusic() async {
+    final player = AudioPlayer();
+    player.stop();
+    await player.play(AssetSource('audio/audio.mp3'));
+    await Future.delayed(const Duration(seconds: 10));
+    player.stop();
   }
 }
 

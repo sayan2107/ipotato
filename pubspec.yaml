@@ -19,6 +19,7 @@ dependencies:
   provider: ^6.0.5
   shared_preferences: ^2.0.18
   equatable: ^2.0.5
+  audioplayers: ^3.0.1
   flutter_svg: ^2.0.2
 
 dev_dependencies:
@@ -31,4 +32,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/audio/audio.mp3
     - assets/images/
