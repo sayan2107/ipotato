@@ -68,9 +68,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       const SizedBox(height: 10),
                       Text(
                         "Duration",
-                        style: AppTextTheme.of(context)
-                            .h6
-                            .copyWith(color: AppColors.darkGray),
+                        style: AppTextTheme.of(context).h6.copyWith(
+                            color: AppColors.darkGray,
+                            fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -165,9 +165,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       child: Text(
         " : ",
         style: TextStyle(
-          height: 11,
           color: AppColors.darkBlue,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
@@ -211,7 +210,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         const SizedBox(
           height: 4,
         ),
-        Text(unitText)
+        Text(
+          unitText,
+          style: AppTextTheme.of(context)
+              .h6
+              .copyWith(letterSpacing: 0.5, fontWeight: FontWeight.w500),
+        )
       ],
     );
   }

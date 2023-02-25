@@ -23,23 +23,15 @@ abstract class _SingleTimer with Store {
   TimerModel workTime = TimerModel(0, Status.initial);
 
   @observable
-  TimerModel restTime = TimerModel(5, Status.initial);
-
-  @observable
   Duration duration = Duration.zero;
 
-  @observable
-  IntervalType intervalType = IntervalType.work;
+  final audioPlayer = AudioPlayer();
 
   @computed
   String get time {
     final value = duration.toString().split(':');
     return "${value[0]}:${value[1]}:${value[2].split('.').first}";
   }
-
-  bool get isWorking => intervalType == IntervalType.work;
-
-  bool get isResting => intervalType == IntervalType.rest;
 
   @action
   void setTimerInfo({
@@ -55,12 +47,7 @@ abstract class _SingleTimer with Store {
 
   @action
   void start() {
-    if (isWorking) {
-      workTime = workTime.newStatus(Status.started);
-    } else {
-      restTime = restTime.newStatus(Status.started);
-    }
-
+    workTime = workTime.newStatus(Status.started);
     stopwatch?.cancel();
     stopwatch = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (duration.inSeconds == 0) {
@@ -77,34 +64,22 @@ abstract class _SingleTimer with Store {
 
   @action
   void stop() {
-    if (isWorking) {
-      workTime = workTime.newStatus(Status.stopped);
-    } else {
-      restTime = restTime.newStatus(Status.stopped);
-    }
-
+    workTime = workTime.newStatus(Status.stopped);
     stopwatch?.cancel();
   }
 
   @action
   void restart() {
-    if (isWorking) {
-      workTime = workTime.newStatus(Status.initial);
-    } else {
-      restTime = restTime.newStatus(Status.initial);
-    }
-
+    workTime = workTime.newStatus(Status.initial);
     stopwatch?.cancel();
-
-    duration = Duration(minutes: isWorking ? workTime.time : restTime.time);
+    duration = Duration(minutes: workTime.time);
   }
 
   void playMusic() async {
-    final player = AudioPlayer();
-    player.stop();
-    await player.play(AssetSource('audio/audio.mp3'));
+    audioPlayer.stop();
+    await audioPlayer.play(AssetSource('audio/audio.mp3'));
     await Future.delayed(const Duration(seconds: 10));
-    player.stop();
+    audioPlayer.stop();
   }
 }
 
@@ -154,12 +129,6 @@ abstract class _MultiTimer with Store {
   void removeTimer(int index) {
     timers.removeAt(index);
   }
-}
-
-enum IntervalType {
-  work,
-  rest,
-  paused,
 }
 
 enum Status {

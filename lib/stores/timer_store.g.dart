@@ -79,22 +79,6 @@ mixin _$SingleTimer on _SingleTimer, Store {
     });
   }
 
-  late final _$restTimeAtom =
-      Atom(name: '_SingleTimer.restTime', context: context);
-
-  @override
-  TimerModel get restTime {
-    _$restTimeAtom.reportRead();
-    return super.restTime;
-  }
-
-  @override
-  set restTime(TimerModel value) {
-    _$restTimeAtom.reportWrite(value, super.restTime, () {
-      super.restTime = value;
-    });
-  }
-
   late final _$durationAtom =
       Atom(name: '_SingleTimer.duration', context: context);
 
@@ -108,22 +92,6 @@ mixin _$SingleTimer on _SingleTimer, Store {
   set duration(Duration value) {
     _$durationAtom.reportWrite(value, super.duration, () {
       super.duration = value;
-    });
-  }
-
-  late final _$intervalTypeAtom =
-      Atom(name: '_SingleTimer.intervalType', context: context);
-
-  @override
-  IntervalType get intervalType {
-    _$intervalTypeAtom.reportRead();
-    return super.intervalType;
-  }
-
-  @override
-  set intervalType(IntervalType value) {
-    _$intervalTypeAtom.reportWrite(value, super.intervalType, () {
-      super.intervalType = value;
     });
   }
 
@@ -185,9 +153,7 @@ title: ${title},
 description: ${description},
 timeStamp: ${timeStamp},
 workTime: ${workTime},
-restTime: ${restTime},
 duration: ${duration},
-intervalType: ${intervalType},
 time: ${time}
     ''';
   }
