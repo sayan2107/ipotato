@@ -33,7 +33,7 @@ class TaskWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           elevation: 4,
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             children: [
               Padding(
@@ -64,7 +64,7 @@ class TaskWidget extends StatelessWidget {
                         ],
                       ),
                     Text(
-                      timer.title.toUpperCase(),
+                      timer.title,
                       style: AppTextTheme.of(context)
                           .h2
                           .copyWith(color: AppColors.darkGreen),
@@ -132,16 +132,10 @@ class MarkCompletedButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        child: Text(
-          "mark completed".toUpperCase(),
-          style: AppTextTheme.of(context).h6.copyWith(
-              letterSpacing: 0.5,
-              color: AppColors.darkestBlue,
-              fontWeight: FontWeight.w500),
-        ),
         style: ButtonStyle(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
+            const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(40)),
             ),
           ),
@@ -149,6 +143,13 @@ class MarkCompletedButton extends StatelessWidget {
               MaterialStateProperty.all<Color>(AppColors.lightPurple),
         ),
         onPressed: onTap,
+        child: Text(
+          "mark completed".toUpperCase(),
+          style: AppTextTheme.of(context).h6.copyWith(
+              letterSpacing: 0.5,
+              color: AppColors.darkestBlue,
+              fontWeight: FontWeight.w500),
+        ),
       ),
     );
   }

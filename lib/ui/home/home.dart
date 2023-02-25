@@ -64,9 +64,7 @@ class HomeScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
+                    const SizedBox(width: 10),
                     SvgPicture.asset(
                       'assets/images/arrow.svg',
                       width: 105,
@@ -85,8 +83,12 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   showModalBottomSheet(
                       context: context,
+                      isScrollControlled: true,
                       builder: (BuildContext context) {
-                        return const AddTaskScreen();
+                        return const FractionallySizedBox(
+                          heightFactor: 0.9,
+                          child: AddTaskScreen(),
+                        );
                       });
                 },
                 tooltip: 'Add',

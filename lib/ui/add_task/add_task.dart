@@ -41,7 +41,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Add task",
+                        "Add Task",
                         style: AppTextTheme.of(context).h1,
                       ),
                       const SizedBox(height: 20),
@@ -74,6 +74,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ),
                       const SizedBox(height: 8),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _durationInput(
                             onChange: (String data) {
@@ -83,7 +84,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                             },
                             unitText: 'HH',
                           ),
-                          const Text(" : "),
+                          _timeSeperator(),
                           _durationInput(
                             onChange: (String data) {
                               setState(() {
@@ -92,7 +93,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                             },
                             unitText: 'MM',
                           ),
-                          const Text(" : "),
+                          _timeSeperator(),
                           _durationInput(
                             onChange: (String data) {
                               setState(() {
@@ -153,6 +154,20 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _timeSeperator() {
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 25),
+      child: Text(
+        " : ",
+        style: TextStyle(
+          height: 11,
+          color: AppColors.darkBlue,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
