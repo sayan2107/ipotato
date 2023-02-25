@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ipotato_timer/constants/colors.dart';
 
 class TimerIconButton extends StatelessWidget {
   const TimerIconButton({
@@ -15,13 +16,16 @@ class TimerIconButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        height: 25,
+        width: 25,
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: AppColors.darkPurple,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
           icon,
           color: Colors.white,
+          size: 20,
         ),
       ),
     );
