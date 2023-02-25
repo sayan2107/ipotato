@@ -15,7 +15,7 @@ class TimerIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child: Ink(
         height: 25,
         width: 25,
         decoration: BoxDecoration(
