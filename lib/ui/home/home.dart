@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
+import 'package:ipotato_timer/ui/add_task/addTask.dart';
+import 'package:ipotato_timer/ui/widgets/add_task/task_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (BuildContext context) {
-                return const Scaffold();
+                return const AddTaskScreen();
               });
         },
         tooltip: 'Add',
@@ -40,7 +42,14 @@ class HomeScreen extends StatelessWidget {
         builder: (_) => ListView(
           children: store.timers.reversed
               .map(
-                (element) => Container(),
+                (element) => TaskWidget(
+                  element,
+                  onTapFinish: () {
+                    int index = store.timers.indexWhere(
+                        (item) => item.timeStamp == element.timeStamp);
+                    store.removeTimer(index);
+                  },
+                ),
               )
               .toList(),
         ),
