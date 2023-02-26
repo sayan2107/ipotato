@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppTextTheme {
-  const AppTextTheme(this._textTheme);
+  const AppTextTheme(TextTheme textTheme);
 
   factory AppTextTheme.of(BuildContext context) =>
       AppTextTheme(Theme.of(context).textTheme);
-  final TextTheme _textTheme;
 
   Color get textColor => Colors.black;
 
@@ -46,24 +45,6 @@ class AppTextTheme {
 
   TextStyle get h6 => TextStyle(
         fontFamily: 'Roboto',
-        fontSize: 12,
-        color: textColor,
-        fontWeight: FontWeight.w400,
-      );
-
-  TextStyle get paragraph => _textTheme.headline6!.copyWith(
-        fontSize: 16,
-        color: textColor,
-        fontWeight: FontWeight.w400,
-      );
-
-  TextStyle get medium => _textTheme.headline6!.copyWith(
-        fontSize: 14,
-        color: textColor,
-        fontWeight: FontWeight.w400,
-      );
-
-  TextStyle get small => _textTheme.headline6!.copyWith(
         fontSize: 12,
         color: textColor,
         fontWeight: FontWeight.w400,

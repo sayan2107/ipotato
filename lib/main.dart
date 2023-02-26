@@ -11,12 +11,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setPreferredOrientations();
-  return runZonedGuarded(() async {
-    runApp(const MyApp());
-  }, (error, stack) {
-    print(stack);
-    print(error);
-  });
+  runApp(const MyApp());
 }
 
 Future<void> setPreferredOrientations() {
