@@ -27,46 +27,47 @@ class HomeScreen extends StatelessWidget {
           style: AppTextTheme.of(context).h1.copyWith(color: Colors.white),
         ),
       ),
-      body: Observer(
-        builder: (_) => Column(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Expanded(
-              child: ListView(
-                children: store.timers.reversed
-                    .map(
-                      (element) => TaskWidget(
-                        element,
-                        onTapFinish: () {
-                          int index = store.timers.indexWhere(
-                              (item) => item.timeStamp == element.timeStamp);
-                          store.removeTimer(index);
-                        },
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 30, bottom: 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Visibility(
-                    visible: store.timers.isEmpty,
-                    child: const NoTimerWidget(),
-                  ),
-                  const SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: _addTimerButton(),
-                  ),
-                ],
-              ),
+            const NoTimerWidget(),
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: _addTimerButton(),
             ),
           ],
         ),
       ),
+      body: Observer(
+        builder: (_) => ListView(
+          children: _sortList(store.timers.reversed.toList())
+              .map(
+                (element) => TaskWidget(
+                  element,
+                  onTapFinish: () {
+                    int index = store.timers.indexWhere(
+                        (item) => item.timeStamp == element.timeStamp);
+                    store.removeTimer(index);
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
     );
+  }
+
+  List<SingleTimer> _sortList(List<SingleTimer> data) {
+    return data
+      ..sort((a, b) {
+        if (b.workTime.wasCompleted) {
+          return 1;
+        }
+        return -1;
+      });
   }
 
   Widget _addTimerButton() {
