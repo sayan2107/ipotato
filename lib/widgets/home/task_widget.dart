@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/widgets/home/start_pause_button.dart';
 import 'package:ipotato_timer/widgets/icon_button.dart';
 import 'package:provider/provider.dart';

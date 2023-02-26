@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/ui/add_task/add_task.dart';
 import 'package:ipotato_timer/widgets/home/no_timer_widget.dart';
 import 'package:ipotato_timer/widgets/home/task_widget.dart';

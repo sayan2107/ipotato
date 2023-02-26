@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 
 class TimerIconButton extends StatelessWidget {
   const TimerIconButton({

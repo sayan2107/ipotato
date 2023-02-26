@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/ui/splash/splash.dart';
 import 'package:provider/provider.dart';
 

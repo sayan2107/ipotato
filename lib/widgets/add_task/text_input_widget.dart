@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 
 class TextInputWidget extends StatelessWidget {
   const TextInputWidget({

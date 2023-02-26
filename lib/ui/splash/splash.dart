@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ipotato_timer/constants/colors.dart';
+import 'package:ipotato_timer/constants/assets.dart';
+import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/ui/home/home.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -40,13 +41,13 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
-                'assets/images/egg_large.svg',
+                Assets.largeEgg,
                 width: 235,
                 height: 235,
               ),
               const SizedBox(height: 40),
               SvgPicture.asset(
-                'assets/images/splash_title.svg',
+                Assets.splashTitle,
               ),
             ],
           ),
