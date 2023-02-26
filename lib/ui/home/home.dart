@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ipotato_timer/constants/colors.dart';
 import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/ui/add_task/add_task.dart';
+import 'package:ipotato_timer/widgets/home/no_timer_widget.dart';
 import 'package:ipotato_timer/widgets/home/task_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -28,82 +28,71 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Observer(
-        builder: (_) => Stack(
+        builder: (_) => Column(
           children: [
-            ListView(
-              children: store.timers.reversed
-                  .map(
-                    (element) => TaskWidget(
-                      element,
-                      onTapFinish: () {
-                        int index = store.timers.indexWhere(
-                            (item) => item.timeStamp == element.timeStamp);
-                        store.removeTimer(index);
-                      },
-                    ),
-                  )
-                  .toList(),
-            ),
-            Positioned(
-              right: 30,
-              bottom: 120,
-              child: Visibility(
-                visible: store.timers.isEmpty,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "No timers active",
-                          style: AppTextTheme.of(context).h5,
-                        ),
-                        Text(
-                          'Press here to start a new',
-                          style: AppTextTheme.of(context).h5,
-                        )
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                    SvgPicture.asset(
-                      'assets/images/arrow.svg',
-                      width: 105,
-                      height: 105,
+            Expanded(
+              child: ListView(
+                children: store.timers.reversed
+                    .map(
+                      (element) => TaskWidget(
+                        element,
+                        onTapFinish: () {
+                          int index = store.timers.indexWhere(
+                              (item) => item.timeStamp == element.timeStamp);
+                          store.removeTimer(index);
+                        },
+                      ),
                     )
-                  ],
-                ),
+                    .toList(),
               ),
             ),
-            Positioned(
-              bottom: 55,
-              right: 30,
-              child: FloatingActionButton(
-                elevation: 2,
-                shape: const CircleBorder(),
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) {
-                        return const FractionallySizedBox(
-                          heightFactor: 0.9,
-                          child: AddTaskScreen(),
-                        );
-                      });
-                },
-                tooltip: 'Add',
-                backgroundColor: AppColors.sky,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    border: Border.all(width: 1),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, bottom: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Visibility(
+                    visible: store.timers.isEmpty,
+                    child: const NoTimerWidget(),
                   ),
-                  child: const Icon(Icons.add),
-                ),
+                  const SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: _addTimerButton(),
+                  ),
+                ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _addTimerButton() {
+    return Builder(
+      builder: (BuildContext context) => FloatingActionButton(
+        elevation: 2,
+        shape: const CircleBorder(),
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return const FractionallySizedBox(
+                  heightFactor: 0.9,
+                  child: AddTaskScreen(),
+                );
+              });
+        },
+        tooltip: 'Add',
+        backgroundColor: AppColors.sky,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50.0),
+            border: Border.all(width: 1),
+          ),
+          child: const Icon(Icons.add),
         ),
       ),
     );
