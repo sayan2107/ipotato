@@ -4,6 +4,6 @@ class Assets {
   // splash screen assets
   static const String appLogo = "";
 
-  // login screen assets
-  static const String appBackground = "";
+  // home screen assets
+  static const String largeArrow = "assets/images/arrow.svg";
 }

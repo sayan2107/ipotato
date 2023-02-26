@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ipotato_timer/constants/assets.dart';
+import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 
 class NoTimerWidget extends StatelessWidget {
@@ -14,18 +16,18 @@ class NoTimerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "No timers active",
+              Strings.noActiveTimerText,
               style: AppTextTheme.of(context).h5,
             ),
             Text(
-              'Press here to start a new',
+              Strings.pressHereToStartText,
               style: AppTextTheme.of(context).h5,
             )
           ],
         ),
         const SizedBox(width: 10),
         SvgPicture.asset(
-          'assets/images/arrow.svg',
+          Assets.largeArrow,
           width: 105,
           height: 105,
         )

@@ -38,101 +38,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        Strings.addTaskText,
-                        style: AppTextTheme.of(context).h1,
-                      ),
-                      const SizedBox(height: 20),
-                      TextInputWidget(
-                        label: Strings.titleText,
-                        hintText: Strings.enterTitleText,
-                        onChangeCallBack: (String data) {
-                          setState(() {
-                            title = data;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 40),
-                      TextInputWidget(
-                        maxLine: 6,
-                        hintText: 'e.g. john@gmail.com',
-                        label: Strings.descriptionText,
-                        onChangeCallBack: (String data) {
-                          setState(() {
-                            description = data;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        Strings.durationText,
-                        style: AppTextTheme.of(context).h6.copyWith(
-                            color: AppColors.darkGray,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          _durationInput(
-                            onChange: (String data) {
-                              setState(() {
-                                durationHour = int.tryParse(data);
-                              });
-                            },
-                            unitText: 'HH',
-                          ),
-                          _timeSeperator(),
-                          _durationInput(
-                            onChange: (String data) {
-                              setState(() {
-                                durationMin = int.tryParse(data);
-                              });
-                            },
-                            unitText: 'MM',
-                          ),
-                          _timeSeperator(),
-                          _durationInput(
-                            onChange: (String data) {
-                              setState(() {
-                                durationSec = int.tryParse(data);
-                              });
-                            },
-                            unitText: 'SS',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      )
-                    ],
-                  ),
+                  child: _mainFormView(),
                 ),
               ),
             ),
             SizedBox(
               width: double.infinity,
               height: 60,
-              child: TextButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(0),
-                        topRight: Radius.circular(0),
-                      ),
-                    ),
-                  ),
-                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) => !_isValid()
-                        ? Colors.grey.withOpacity(0.2)
-                        : AppColors.lightPurple,
-                  ),
-                ),
-                onPressed: !_isValid()
+              child: _addTaskButton(
+                onTap: !_isValid()
                     ? null
                     : () {
                         store.addTimer(
@@ -146,17 +60,116 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         );
                         Navigator.of(context).pop();
                       },
-                child: Text(
-                  'Add Task',
-                  style: AppTextTheme.of(context)
-                      .h5
-                      .copyWith(fontWeight: FontWeight.w500),
-                ),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _mainFormView() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          Strings.addTaskText,
+          style: AppTextTheme.of(context).h1,
+        ),
+        const SizedBox(height: 20),
+        TextInputWidget(
+          label: Strings.titleText,
+          hintText: Strings.enterTitleText,
+          onChangeCallBack: (String data) {
+            setState(() {
+              title = data;
+            });
+          },
+        ),
+        const SizedBox(height: 40),
+        TextInputWidget(
+          maxLine: 6,
+          hintText: Strings.inputExampleText,
+          label: Strings.descriptionText,
+          onChangeCallBack: (String data) {
+            setState(() {
+              description = data;
+            });
+          },
+        ),
+        const SizedBox(height: 10),
+        Text(
+          Strings.durationText,
+          style: AppTextTheme.of(context)
+              .h6
+              .copyWith(color: AppColors.darkGray, fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: 8),
+        _durationInputsWidget(),
+        const SizedBox(
+          height: 50,
+        )
+      ],
+    );
+  }
+
+  Widget _addTaskButton({VoidCallback? onTap}) {
+    return TextButton(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(0),
+              topRight: Radius.circular(0),
+            ),
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) => !_isValid()
+              ? Colors.grey.withOpacity(0.2)
+              : AppColors.lightPurple,
+        ),
+      ),
+      onPressed: onTap,
+      child: Text(
+        Strings.addTaskText,
+        style:
+            AppTextTheme.of(context).h5.copyWith(fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+
+  Widget _durationInputsWidget() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _durationInput(
+          onChange: (String data) {
+            setState(() {
+              durationHour = int.tryParse(data);
+            });
+          },
+          unitText: 'HH',
+        ),
+        _timeSeperator(),
+        _durationInput(
+          onChange: (String data) {
+            setState(() {
+              durationMin = int.tryParse(data);
+            });
+          },
+          unitText: 'MM',
+        ),
+        _timeSeperator(),
+        _durationInput(
+          onChange: (String data) {
+            setState(() {
+              durationSec = int.tryParse(data);
+            });
+          },
+          unitText: 'SS',
+        ),
+      ],
     );
   }
 
