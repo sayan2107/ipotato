@@ -6,7 +6,7 @@ import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/app_text_theme.dart';
 import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/widgets/home/start_pause_button.dart';
-import 'package:ipotato_timer/widgets/icon_button.dart';
+import 'package:ipotato_timer/widgets/timer_icon_button.dart';
 import 'package:provider/provider.dart';
 
 class TaskWidget extends StatelessWidget {

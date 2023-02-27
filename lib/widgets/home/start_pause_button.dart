@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
-import 'package:ipotato_timer/widgets/icon_button.dart';
+import 'package:ipotato_timer/widgets/timer_icon_button.dart';
 
 class StartPauseButton extends StatelessWidget {
   const StartPauseButton({
