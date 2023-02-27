@@ -6,6 +6,7 @@ import 'package:ipotato_timer/constants/strings.dart';
 import 'package:ipotato_timer/stores/timer_store.dart';
 import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/ui/splash/splash.dart';
+import 'package:ipotato_timer/utils/routes/navigation.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -41,6 +42,19 @@ class MyApp extends StatelessWidget {
             centerTitle: false,
           ),
         ),
+        onGenerateRoute: (RouteSettings settings) {
+          final String? name = settings.name;
+          final WidgetBuilder? builder = dialogRoutes[name];
+          if (builder != null) {
+            return MaterialPageRoute<dynamic>(
+              builder: builder,
+              settings: settings,
+              fullscreenDialog: true,
+            );
+          }
+          return null;
+        },
+        routes: routes,
         title: Strings.appName,
         home: const SplashScreen(),
       ),

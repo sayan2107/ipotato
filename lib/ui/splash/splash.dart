@@ -7,6 +7,7 @@ import 'package:ipotato_timer/theme/colors.dart';
 import 'package:ipotato_timer/ui/home/home.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const String route = '/splash';
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -23,11 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void _navigateToHome() {
     Timer(
       const Duration(milliseconds: 700),
-      () => Navigator.pushReplacement(
+      () => Navigator.pushReplacementNamed(
         context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
+        HomeScreen.route,
       ),
     );
   }

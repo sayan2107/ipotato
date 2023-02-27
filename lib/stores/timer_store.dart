@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:mobx/mobx.dart';
 
 part 'timer_store.g.dart';
@@ -25,7 +24,6 @@ abstract class _SingleTimer with Store {
   @observable
   Duration duration = Duration.zero;
 
-  final audioPlayer = AudioPlayer();
 
   @computed
   String get time {
@@ -53,9 +51,6 @@ abstract class _SingleTimer with Store {
       if (duration.inSeconds == 0) {
         stopwatch?.cancel();
         workTime = workTime.newStatus(Status.completed);
-
-        //play music
-        playMusic();
       } else {
         duration -= const Duration(seconds: 1);
       }
@@ -73,13 +68,6 @@ abstract class _SingleTimer with Store {
     workTime = workTime.newStatus(Status.initial);
     stopwatch?.cancel();
     duration = Duration(minutes: workTime.time);
-  }
-
-  void playMusic() async {
-    audioPlayer.stop();
-    await audioPlayer.play(AssetSource('audio/audio.mp3'));
-    await Future.delayed(const Duration(seconds: 10));
-    audioPlayer.stop();
   }
 }
 
