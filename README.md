@@ -1,16 +1,14 @@
 # ipotato_timer
 
-This is a sample app to create multiple stopwatch timers
+This is a simple application to create multiple stopwatch timers
 
-## Getting Started
+## Preview
+<p float="left">
+  <img src="https://github.com/sayan2107/ipotato/blob/main/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2014%20Pro%20Max%20-%202023-02-27%20at%2023.13.45.png" width="200" height="370" />
+  <img src="https://github.com/sayan2107/ipotato/blob/main/screenshots/Screenshot%202023-02-27%20at%2011.10.52%20PM.png" width="200" height="370"  /> 
+  <img src="https://github.com/sayan2107/ipotato/blob/main/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2014%20Pro%20Max%20-%202023-02-27%20at%2023.11.55.png" width="200" height="370"  />
+ <img src="https://github.com/sayan2107/ipotato/blob/main/screenshots/Screenshot%202023-02-27%20at%2011.12.43%20PM.png" width="200" height="370"  />
+ <img src="https://github.com/sayan2107/ipotato/blob/main/screenshots/Screenshot%202023-02-27%20at%2011.12.28%20PM.png" width="200" height="370"  />
+</p>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Made with ❤  Flutter
