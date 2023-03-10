@@ -1,6 +1,6 @@
 # ipotato_timer
 
-This is a simple application to create multiple stopwatch timers
+This is a simple application to create multiple stopwatch timers using mobx pattern
 
 ## Preview
 <p float="left">
